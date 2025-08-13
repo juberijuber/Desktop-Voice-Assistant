@@ -26,11 +26,11 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Define Gemini chat function
 def ai_chat(prompt):
-    model = genai.GenerativeModel("gemini-pro")
+    model = genai.GenerativeModel("gemini-1.5-flash")
     response = model.generate_content(prompt)
     reply = response.text
-    speak(reply)  # Your existing speak() function
     print(reply)
+    speak(reply) 
 
 def speak(audio) -> None:
     engine = pyttsx3.init()
@@ -45,40 +45,44 @@ def speak(audio) -> None:
 def time() -> None:
     """Tells the current time."""
     current_time = datetime.datetime.now().strftime("%I:%M:%S %p")
+    print("The current time is", current_time)
     speak("The current time is")
     speak(current_time)
-    print("The current time is", current_time)
+    
 
 
 def date() -> None:
     """Tells the current date."""
     now = datetime.datetime.now()
+    
+    print(f"The current date is {now.day}/{now.month}/{now.year}")
     speak("The current date is")
     speak(f"{now.day} {now.strftime('%B')} {now.year}")
-    print(f"The current date is {now.day}/{now.month}/{now.year}")
  
 
 def wishme() -> None:
     """Greets the user based on the time of day."""
-    speak("Welcome back,sir!")
     print("Welcome back, sir!")
+    speak("Welcome back,sir!")
+    
 
     hour = datetime.datetime.now().hour
     if 4 <= hour < 12:
-        speak("Good morning!")
         print("Good morning!")
+        speak("Good morning!")
+        
     elif 12 <= hour < 16:
-        speak("Good afternoon!")
         print("Good afternoon!")
+        speak("Good afternoon!")
     elif 16 <= hour < 24:
-        speak("Good evening!")
         print("Good evening!")
+        speak("Good evening!")
     else:
         speak("Good night, see you tomorrow.")
 
     assistant_name = load_name()
-    speak(f"{assistant_name} at your service. Please tell me how may I assist you.")
     print(f"{assistant_name} at your service. Please tell me how may I assist you.")
+    speak(f"{assistant_name} at your service. Please tell me how may I assist you.")
 
 
 def screenshot() -> None:
@@ -159,17 +163,16 @@ def search_wikipedia(query):
     try:
         speak("Searching Wikipedia...")
         result = wikipedia.summary(query, sentences=2)
-        speak(result)
         print(result)
+        speak(result)
     except wikipedia.exceptions.DisambiguationError:
         speak("Multiple results found. Please be more specific.")
     except Exception:
         speak("I couldn't find anything on Wikipedia.")
 
 
-def weather(city="Chennai"):
-    """Tells the current weather of a city using OpenWeatherMap API."""
-    
+def weather(city):
+    """Tells the current weather of a city using OpenWeatherMap API.""" 
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={OPEN_WEATHER_API_KEY}&units=metric"
 
     try:
@@ -177,8 +180,8 @@ def weather(city="Chennai"):
         if res.get("main"):
             temp = res["main"]["temp"]
             desc = res["weather"][0]["description"]
-            speak(f"The temperature in {city} is {temp} degrees Celsius with {desc}.")
             print(f"Weather in {city}: {temp}°C, {desc}")
+            speak(f"The temperature in {city} is {temp} degrees Celsius with {desc}.")
         else:
             speak("Sorry, I couldn't get the weather details.")
     except Exception as e:
@@ -207,12 +210,12 @@ def send_email(to, subject, body):
         
         # Send the email
         server.sendmail(EMAIL_ADDRESS, to, message)
-        speak("Email sent successfully!")
         print("✅ Email sent successfully!")
+        speak("Email sent successfully!")
     
     except Exception as e:
-        speak("Failed to send email.")
         print("❌ Error:", e)
+        speak("Failed to send email.")
     
     finally:
         server.quit()
