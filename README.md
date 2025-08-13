@@ -6,20 +6,22 @@
 [![Gemini AI](https://img.shields.io/badge/Powered%20by-Gemini%20AI-orange.svg)](https://aistudio.google.com/)
 
 
-Jarvis is a Python-based desktop voice assistant that listens to your commands, answers your questions, and performs tasks like opening applications, searching the web, sending emails, and more.  
-
-Now upgraded with **Google Gemini AI** for more intelligent and natural conversations.
+Jarvis is a Python-based desktop voice assistant that can perform multiple everyday tasks using speech recognition and automation. Whether it’s opening applications, searching the web, or telling jokes and so on — Jarvis is here to help you, hands-free.
 
 ---
 
 ## ✨ Features
-- 🎙️ **Voice-based interaction**  
-- 💬 **AI-powered responses** using `gemini-1.5-pro`  
-- 📧 **Email sending** integration  
-- 🌐 **Web search** functionality
-- 📷 **Screen shot**
-- 🖥️ **System control** (open apps, play music, etc.)  
-- 🗣️ **Text-to-Speech** replies
+- 👋 **Greets the user**  
+- ⏰ **Tells current time and date**  
+- 💻 **Launches applications/software**  
+- 🔒 **Locks the screen**  
+- 🌐 **Opens any website**  
+- 📚 **Provides information via Wikipedia**  
+- 🔍 **Searches on Google**  
+- 🎵 **Plays music**  
+- 📝 **Takes important notes in a text file**  
+- 📷 **Captures screenshots with a custom filename**  
+- 😂 **Tells jokes**
 
 
 ---
@@ -33,9 +35,58 @@ Now upgraded with **Google Gemini AI** for more intelligent and natural conversa
 
 ---
 
-## 🚀 Setup Instructions
 
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/yourusername/jarvis-desktop-assistant.git
-cd jarvis-desktop-assistant
+## Requirements
+
+Python 3.6+
+
+## 📌Installation
+
+1. **Fork The Repository**
+   - Click the "Fork" button on the top right corner of the repository page.
+
+2. **Clone The Repository**
+   - Clone the forked repository to your local machine:
+     ```bash
+     git clone <URL>
+     cd Jarvis-Desktop-Voice-Assistant
+     ```
+
+3.  **Create and Activate a Virtual Environment**
+     - Create a virtual environment:
+     ```bash
+     python -m venv .venv
+     ```
+   - Activate the virtual environment:
+     - For Windows:
+       ```bash
+       .venv\Scripts\activate
+       ```
+     - For macOS/Linux:
+       ```bash
+       source .venv/bin/activate
+       ```
+   - This activates the virtual environment and should look like `(venv) directory/of/your/project>`
+
+4. **Install Requirements**
+
+   - Install all the requirements given in **[requirements.txt](https://github.com/kishanrajput23/Jarvis-Desktop-Voice-Assistant/blob/main/requirements.txt)** by running the command `pip install -r requirements.txt`
+
+5. **Install PyAudio**  
+   - Follow the instructions given **[here](https://stackoverflow.com/questions/52283840/i-cant-install-pyaudio-on-windows-how-to-solve-error-microsoft-visual-c-14)**
+
+6. **Run the Assistant**
+  - Run the main script:
+    ```bash
+    python jarvis.py
+    ```
+  - Now Enjoy with your own assistant !!!!
+
+7. **Deactivate the Virtual Environment**
+   - After you're done, deactivate the virtual environment:
+     ```bash
+     deactivate
+     ```
+
+
+
